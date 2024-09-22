@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You Interface</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+              font-family: 'Pacifico', cursive;
+              text-align: center;
+              color: black;
+              font-size: 3rem;
+            }
+        }
+
+        .thank-you {
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .payment-options {
+            margin: 20px 0;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .payment-option input {
+            margin-right: 10px;
+            accent-color: #007bff;
+        }
+
+        .address-fields, .card-fields {
+            display: none;
+            margin-top: 20px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px; /* Space before button */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="thank-you">
+            <h2>Thank You!</h2>
+            <p></p>
+        </div>
+
+        <div class="payment-options">
+            <h4>Select Payment Method:</h4>
+            <div class="payment-option">
+                <input type="radio" id="cod" name="payment" value="Cash on Delivery" checked>
+                <label for="cod">Cash on Delivery</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="visa" name="payment" value="Visa">
+                <label for="visa">Visa</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="mastercard" name="payment" value="MasterCard">
+                <label for="mastercard">MasterCard</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="paypal" name="payment" value="PayPal">
+                <label for="paypal">PayPal</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="discover" name="payment" value="Discover">
+                <label for="discover">Discover</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="amex" name="payment" value="American Express">
+                <label for="amex">American Express</label>
+            </div>
+        </div>
+
+        <div class="address-fields">
+            <h4>Enter Address for Cash on Delivery:</h4>
+            <input type="text" placeholder="Street Address" id="address">
+            <input type="text" placeholder="City" id="city">
+            <input type="text" placeholder="Zip Code" id="zip">
+        </div>
+
+        <div class="card-fields">
+            <h4>Enter Card Details:</h4>
+            <input type="text" placeholder="Card Number" id="cardNumber">
+            <input type="password" placeholder="Password" id="cardPassword">
+            <input type="text" placeholder="CVV" id="cvv">
+        </div>
+
+        <button id="confirmOrder" disabled>Confirm Order</button>
+    </div>
+
+    <script>
+        const paymentOptions = document.querySelectorAll('input[name="payment"]');
+        const addressFields = document.querySelector('.address-fields');
+        const cardFields = document.querySelector('.card-fields');
+        const confirmButton = document.getElementById('confirmOrder');
+
+        paymentOptions.forEach(option => {
+            option.addEventListener('change', function() {
+                if (this.value === 'Cash on Delivery') {
+                    addressFields.style.display = 'block';
+                    cardFields.style.display = 'none';
+                    confirmButton.disabled = !validateAddressFields();
+                } else {
+                    addressFields.style.display = 'none';
+                    cardFields.style.display = 'block';
+                    confirmButton.disabled = !validateCardFields();
+                }
+            });
+        });
+
+        function validateAddressFields() {
+            const address = document.getElementById('address').value.trim();
+            const city = document.getElementById('city').value.trim();
+            const zip = document.getElementById('zip').value.trim();
+            return address && city && zip;
+        }
+
+        function validateCardFields() {
+            const cardNumber = document.getElementById('cardNumber').value.trim();
+            const cardPassword = document.getElementById('cardPassword').value.trim();
+            const cvv = document.getElementById('cvv').value.trim();
+            return cardNumber && cardPassword && cvv;
+        }
+
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', function() {
+                if (paymentOptions[0].checked) {
+                    confirmButton.disabled = !validateAddressFields();
+                } else {
+                    confirmButton.disabled = !validateCardFields();
+                }
+            });
+        });
+
+        document.getElementById('confirmOrder').addEventListener('click', function() {
+            const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+            let message = `Order Confirmed!\nPayment method: ${selectedPayment}`;
+
+            if (selectedPayment === 'Cash on Delivery') {
+                const address = document.getElementById('address').value;
+                const city = document.getElementById('city').value;
+                const zip = document.getElementById('zip').value;
+                message += `\nAddress: ${address}, ${city}, ${zip}`;
+            } else {
+                const cardNumber = document.getElementById('cardNumber').value;
+                const cvv = document.getElementById('cvv').value;
+                message += `\nCard Number: ${cardNumber}\nCVV: ${cvv}`;
+            }
+
+            alert(message);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+.contact-form {
+    background: #fff;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+    margin-bottom: 20px; /* Adjust bottom margin as needed */
+    text-align: center;
+}
+
+/* Additional improvements (optional): */
+
+.contact-form h2 {
+    margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form textarea {
+    height: 100px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #0069d9;
+}
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 2.5rem; /* Bigger font size */
+            font-weight: bold; /* Bold text */
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        .form-group button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        .form-group button:hover {
+            background-color: #2980b9;
+        }
+        .message {
+            display: none;
+            margin-top: 15px;
+            color: green;
+            text-align: center;
+        }
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+ <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            
+            color: white;
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 8px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cta {
+            background-color: #ff5722;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+           
+        }
+
+        .hero {
+            background: url('/images /n.jpg') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content {
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background-color: #ff5722;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .products-section {
+            padding: 60px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .products-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .btn-secondary {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+        }
+
+        .about-section {
+            padding: 20px 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .testimonials-section {
+            padding: 60px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .testimonials-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+        }
+        .advertisement {
+    background: white; /* Yellow background */
+    padding: 20px; /* Space inside the box */
+    border-radius: 65px; /* Rounded corners */
+    text-align: center; /* Center align text */
+    margin: 40px auto; /* Center the box with top and bottom margin */
+    max-width: 600px; /* Max width of the box */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    margin-top: 50px;    /* Margin top */
+            margin-bottom: 30px; /* Margin bottom */
+            margin-left: 20px;   /* Margin left */
+            margin-right: 20px;  /* Margin right */
+            
+            
+           <div style="margin: 0 auto; width: 200px; height: 100px; background-color: blue;"></div>
+
+}
+
+.advertisement h2 {
+    font-size: 24px; /* Heading size */
+    margin-bottom: 10px; /* Space below heading */
+    
+}
+
+.advertisement p {
+    margin-bottom: 20px; /* Space below paragraph */
+   
+}
+
+.btn-advertise {
+    background-color: #ff5722; /* Button background color */
+    color: white; /* Button text color */
+    padding: 12px 20px; /* Button padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Slightly rounded button */
+    text-decoration: none; /* No underline */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+    
+}
+
+.btn-advertise:hover {
+    background-color: #e64a19; /* Darker color on hover */
+    
+  
+}
+
+
+        .testimonial h3 {
+            font-size: 18px;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .contact-section {
+            padding: 60px 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+/* Style for the button */
+.myButtonClass {
+  background-color: #3498db;    /* Blue background */
+  color: white;                 /* White text */
+  padding: 12px 30px;           /* Padding for a larger button */
+  font-size: 18px;              /* Larger font size */
+  font-weight: bold;            /* Bold font */
+  border: 2px solid transparent;/* Transparent border */
+  border-radius: 50px;          /* Fully rounded edges */
+  cursor: pointer;              /* Pointer cursor on hover */
+  transition: all 0.3s ease;    /* Smooth transition on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hover effect */
+.myButtonClass:hover {
+  background-color: #2980b9;    /* Darker blue on hover */
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+  transform: translateY(-3px);  /* Slightly raises button on hover */
+}
+
+/* Active button effect (when clicked) */
+.myButtonClass:active {
+  transform: translateY(1px);   /* Button slightly moves back down */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+}
+
+        .contact-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px; /* Could be more or less, depending on screen size */
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Sign-Up Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #ff5722;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #ff5722;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e64a19;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .products-grid, .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            .products-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h2 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .btn-primary {
+                padding: 10px 20px;
+            }
+
+            .product-card h3 {
+                font-size: 18px;
+            }
+
+            .product-card p {
+                font-size: 16px;
+            }
+            
+
+           
+}
+
+            
+            
+           <div style="margin: 0 auto; width: 200px; height: 100px; background-color: blue;"></div>
+
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+               
+            </div>
+
+            <a href="/index.html" id="" class="cta">redirect to home page</a>
+        </nav>
+    </header>
+<div class="contact-form">
+    <h2 style="font-family: 'Courier New', monospace;">Contact Us</h2>
+
+    <form id="contactForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+        <div id="submissionMessage" class="message"></div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/daniyalhasan727@gmail.com"></script>
+<script>
+    (function(){
+        emailjs.init("Daniyal hasan"); // Replace with your EmailJS user ID
+    })();
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const serviceID = 'daniyalhasan727@gmail.co'; // Replace with your service ID
+        const templateID = 'template_z21n36o'; // Replace with your template ID
+
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                document.getElementById('submissionMessage').textContent = 'Your message has been sent!';
+                document.getElementById('submissionMessage').classList.remove('error-message');
+                document.getElementById('submissionMessage').style.display = 'block';
+                this.reset();
+            }, (err) => {
+                document.getElementById('submissionMessage').textContent = 'Failed to send your message. Please try again.';
+                document.getElementById('submissionMessage').classList.add('error-message');
+                document.getElementById('submissionMessage').style.display = 'block';
+                console.error('Failed to send message. Error:', err);
+            });
+    });
+</script>
+
+</body>
+</html>
